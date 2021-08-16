@@ -3,14 +3,13 @@ from flask_mysqldb import MySQL
 
 
 
-app = Flask(__name__, static_url_path="/static")
-
 #Conexión con MySQL
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_HOST'] = 'vendarts.mysql.pythonanywhere-services.com'
+app.config['MYSQL_USER'] = 'vendarts'
 app.config['MYSQL_PASSWORD'] = 'REYES11sq...'
-app.config['MYSQL_DB'] = 'vendarts_contac'
+app.config['MYSQL_DB'] = 'vendarts$vendarts_contac'
 mysql = MySQL(app)
+
 
 #Aquí se guardan los datos, dentro de la memoria de la app.
 app.secret_key = 'mysecretkey'
@@ -35,6 +34,10 @@ def store():
 @app.route("/registrarvista")
 def registrarvista():
     return render_template("registrarvista.html")
+
+@app.route("/galeria")
+def galeria():
+    return render_template("Galeria.html")
 
 @app.route("/vaso_decorado")
 def vaso():
